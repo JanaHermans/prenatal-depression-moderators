@@ -126,7 +126,7 @@ imputed.dfs <- lapply(imputed.dfs, function (x)
 imputed.dfs <- lapply(imputed.dfs, function (x)
   x <- x %>%
     dplyr::mutate(preg_smk = dplyr::case_when(
-      b670 == 0 | b671 == 0 | c482 == 0 ~ "0: Never smoked",
+      b670 == 0 & b671 == 0 & c482 == 0 ~ "0: Never smoked",
       as.numeric(b670) >= 1 | as.numeric(b671) >= 1 | as.numeric(c482) >= 1 ~ "1: Any smoking",
       TRUE ~ NA_character_
     ))
@@ -300,7 +300,8 @@ if (ELS_50_theshold == 'yes') {
     return(x)
   })
 }
-#--------------------------Randomly include one sibling-------------------------
+
+#----------------------------Randomly include one twin--------------------------
 imputed.dfs <- lapply(imputed.dfs, function(df) {
   df %>%
     group_by(IDM) %>%
@@ -310,7 +311,6 @@ imputed.dfs <- lapply(imputed.dfs, function(df) {
 
 # Recreate mids object
 new_imp_rf <- miceadds::datlist2mids(imputed.dfs)  # Converts list to imputations for analysis
-
 #--------------------------------MAIN ANALYSES-----------------------------------
 covariates <- c("assigned_sex","outcome_age","preg_alc","preg_smk","m_age_birth",
                 "prepreg_BMI","natorig","edu_cat")

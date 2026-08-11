@@ -251,7 +251,7 @@ complete_cases <- complete_cases[complete.cases(complete_cases),]
 descriptives$GenR <- incomplete_data
 complete_datasets$GenR <- complete_cases
 #------------------------------DATA PREP ALSPAC---------------------------------
-filename <- 'ALSPAC_impset_2025-10-23.Rdata'
+filename <- 'ALSPAC_impset_2025-11-09.Rdata'
 
 load(file.path(datapath, filename))
 
@@ -339,7 +339,7 @@ incomplete_data <- incomplete_data %>%
 
 incomplete_data <- incomplete_data %>%
   dplyr::mutate(preg_smk = dplyr::case_when(
-    b670 == 0 | b671 == 0 | c482 == 0 ~ "0: Never smoked",
+    b670 == 0 & b671 == 0 & c482 == 0 ~ "0: Never smoked",
     as.numeric(b670) >= 1 | as.numeric(b671) >= 1 | as.numeric(c482) >= 1 ~ "1: Any smoking",
     TRUE ~ NA_character_
     )
