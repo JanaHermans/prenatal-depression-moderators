@@ -11,6 +11,8 @@ This repository hosts the R code of the project "**Prenatal maternal depression,
 - **`03_ALSPAC_MICE_QC.R`**: Performs quality control of the imputation in the ALSPAC dataset and creates QC document.
 - **`03_GenR_MICE_QC.R`**: Performs quality control of the imputation in the GenR dataset and creates QC document.
 - **`04_ALSPAC_moderation_imputedcases.R`**: Performs the project's analyses in the imputed ALSPAC dataset.
+- **`04_GenR_moderation_50ELS.R`**: Performs the project's analyses in the imputed GenR dataset of participants with at least 50% of early-life stress items.
+- **`04_ALSPAC_moderation_50ELS.R`**: Performs the project's analyses in the imputed ALSPAC dataset of participants with at least 50% of early-life stress items.
 - **`04_GenR_moderation_imputedcases.R`**: Performs the project's analyses in the imputed GenR dataset.
 - **`04_moderation_completecases.R`**: Performs the project's analyses in the complete cases (both ALSPAC and GenR).
 - **`05_descriptives.R`**: Script that generates descriptive tables for the full dataset and complete cases (both ALSPAC and GenR).
