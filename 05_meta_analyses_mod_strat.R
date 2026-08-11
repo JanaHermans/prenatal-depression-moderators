@@ -14,10 +14,10 @@ library(dplyr)
 library(ggpubr)
 
 projectpath <- dirname(file.choose())
-setwd(file.path(projectpath,"output")) 
-results_path <- paste0(projectpath,"/results/10112025_results")
+setwd(file.path(projectpath)) 
+results_path <- paste0(projectpath,"/results/21072026_results")
 outdir <- paste0(projectpath,"/results/plots")
-filename_ALSPAC <- "res_mod_stratified_imputed_ALSPAC2025-11-10.RData"
+filename_ALSPAC <- "res_mod_stratified_imputed_ALSPAC2026-07-21.RData"
 filename_GenR <- "res_mod_stratified_imputed_GenR2025-11-07.RData"
 ALSPAC_file <- readRDS(file.path(results_path,filename_ALSPAC))
 GenR_file <- readRDS(file.path(results_path,filename_GenR))
@@ -303,7 +303,7 @@ annotate_figure(
   top = text_grob("Associations prenatal maternal depression and offspring outcomes by moderator exposure\n", 
                   face = "bold", size = 18))
 
-ggsave("Figure3_mod_stratified_NEW.tiff", units="in", path = outdir, width = 14, height = 9, device='tiff', dpi=700)
+ggsave("Figure3_mod_stratified.tiff", units="in", path = outdir, width = 14, height = 9, device='tiff', dpi=700)
 
 dev.off()
 

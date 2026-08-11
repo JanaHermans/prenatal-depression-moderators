@@ -16,10 +16,10 @@ library(flextable)
 library(officer)
 
 projectpath <- dirname(file.choose())
-setwd(file.path(projectpath,"output")) 
-results_path <- paste0(projectpath,"/results/10112025_results")
+setwd(file.path(projectpath)) 
+results_path <- paste0(projectpath,"/results/21072026_results")
 outdir <- paste0(projectpath,"/results/plots")
-filename_ALSPAC <- "res_direct_imputed_ALSPAC2025-11-10.RData"
+filename_ALSPAC <- "res_direct_imputed_ALSPAC2026-07-21.RData"
 filename_GenR <- "res_direct_imputed_GenR2025-11-07.RData"
 ALSPAC_file <- readRDS(file.path(results_path,filename_ALSPAC))
 GenR_file <- readRDS(file.path(results_path,filename_GenR))
@@ -99,18 +99,6 @@ combined_total$p.value_adj <- p.adjust(combined_total$p.value, method = "BH")
 int_results <- combined_total[combined_total$outcome == "inter_z",]
 ext_results <- combined_total[combined_total$outcome == "exter_z",]
 adhd_results <- combined_total[combined_total$outcome == "ADHD_z",]
-
-# Number of eff. tests is 28 (Galwey method):
-#meff_df <- 28
-#int_results$p.value_adj <- 
-#  ifelse(as.numeric(int_results$p.value)*meff_df>1,1,
-#         as.numeric(int_results$p.value)*meff_df)
-#ext_results$p.value_adj <- 
-#  ifelse(as.numeric(ext_results$p.value)*meff_df>1,1,
-#         as.numeric(ext_results$p.value)*meff_df)
-#adhd_results$p.value_adj <- 
-#  ifelse(as.numeric(adhd_results$p.value)*meff_df>1,1,
-#         as.numeric(adhd_results$p.value)*meff_df)
 
 # PLOT
 # Set order

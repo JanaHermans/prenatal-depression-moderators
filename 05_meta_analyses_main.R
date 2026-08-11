@@ -16,10 +16,10 @@ library(flextable)
 library(officer)
 
 projectpath <- dirname(file.choose())
-setwd(file.path(projectpath,"output")) 
-results_path <- paste0(projectpath,"/results/10112025_results")
+setwd(file.path(projectpath)) 
+results_path <- paste0(projectpath,"/results/21072026_results")
 outdir <- paste0(projectpath,"/results/tables/")
-filename_ALSPAC <- "res_main_imputed_ALSPAC2025-11-10.RData"
+filename_ALSPAC <- "res_main_imputed_ALSPAC2026-07-21.RData"
 filename_GenR <- "res_main_imputed_GenR2025-11-07.RData"
 ALSPAC_file <- readRDS(file.path(results_path,filename_ALSPAC))
 GenR_file <- readRDS(file.path(results_path,filename_GenR))
@@ -124,11 +124,6 @@ combined_total <- combined_total[,c("moderator","estimate","outcome",
 
 # Apply multiple testing correction
 combined_total$p.value_adj <- p.adjust(combined_total$p.value, method = "BH")
-# Number of eff. tests in GenR is 21 and in ALSPAC 22 (Galwey method):
-#meff_df <- 28
-#combined_total$p.value_adj <- 
-#  ifelse(as.numeric(combined_total$p.value)*meff_df>1,1,
-#         as.numeric(combined_total$p.value)*meff_df)
 
 inter_table <- combined_total[combined_total$outcome == "inter_z",]
 exter_table <- combined_total[combined_total$outcome == "exter_z",]
@@ -264,11 +259,6 @@ combined_ALSPAC_GenR <- combined_ALSPAC_GenR[,c("moderator","cohort","estimate",
 
 # Apply multiple testing correction
 combined_ALSPAC_GenR$p.value_adj <- p.adjust(combined_ALSPAC_GenR$p.value, method = "BH")
-# Number of eff. tests in GenR is 21 and in ALSPAC 22 (Galwey method):
-#meff_df <- 28
-#combined_ALSPAC_GenR$p.value_adj <- 
-#  ifelse(as.numeric(combined_ALSPAC_GenR$p.value)*meff_df>1,1,
-#         as.numeric(combined_ALSPAC_GenR$p.value)*meff_df)
 
 inter_table <- combined_ALSPAC_GenR[combined_ALSPAC_GenR$outcome == "inter_z",]
 exter_table <- combined_ALSPAC_GenR[combined_ALSPAC_GenR$outcome == "exter_z",]
